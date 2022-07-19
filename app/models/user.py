@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Boolean, Column, Integer, String
 from sqlalchemy.orm import relationship
 
 from db.database import Base
@@ -12,4 +12,6 @@ class User(Base):
         "username", String(length=255), nullable=False, unique=True
     )
     password = Column("password", String(length=255), nullable=False)
-    carts = relationship("Cart", backref="users")
+    is_admin = Column("is_admin", Boolean)
+    is_superuser = Column("is_superuser", Boolean)
+    cart = relationship("Cart", uselist=False)

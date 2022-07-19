@@ -5,6 +5,8 @@ from schemas.cart import CartOut
 
 class UserBase(BaseModel):
     username: str = Field(...)
+    is_admin: bool | None = None
+    is_superuser: bool | None = None
 
 
 class UserCreate(UserBase):
@@ -13,7 +15,7 @@ class UserCreate(UserBase):
 
 class UserOut(UserBase):
     id: int
-    carts: list[CartOut] | None = None
+    cart: CartOut | None = None
 
     class Config:
         orm_mode = True

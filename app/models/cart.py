@@ -9,4 +9,5 @@ class Cart(Base):
 
     id = Column("id", Integer, primary_key=True)
     user_id = Column("user_id", Integer, ForeignKey("users.id"))
-    products = relationship("Product", secondary="cart_products")
+    user = relationship("User", back_populates="cart")
+    products = relationship("ProductInCart", backref="cart")

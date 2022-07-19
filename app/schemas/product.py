@@ -1,7 +1,5 @@
 from pydantic import BaseModel, Field
 
-from schemas.category import CategoryCreate
-
 
 class ProductBase(BaseModel):
     title: str = Field(...)
@@ -17,6 +15,18 @@ class ProductCreate(ProductBase):
 
 
 class ProductOut(ProductBase):
+    id: int
+
+    class Config:
+        orm_mode = True
+
+
+class ProductInCartBase(BaseModel):
+    product_id: int = Field(...)
+    quantity_in_cart: int = Field(...)
+
+
+class ProductInCartOut(ProductInCartBase):
     id: int
 
     class Config:

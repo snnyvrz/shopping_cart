@@ -3,6 +3,7 @@ from sqlalchemy import delete, insert, select, update
 from db.database import database
 from models import Cart
 from schemas.cart import CartCreate
+from schemas.user import UserOut
 
 
 async def get_all():
@@ -15,8 +16,8 @@ async def get_by_id(id: int):
     return await database.fetch_one(query)
 
 
-async def post(cart: CartCreate):
-    query = insert(Cart).values(user_id=cart.user_id)
+async def post(cart: CartCreate, current_user: UserOut):
+    query = insert(Cart).values(user_id=current_user.id)
     id = await database.execute(query)
     return {**cart.dict(), "id": id}
 

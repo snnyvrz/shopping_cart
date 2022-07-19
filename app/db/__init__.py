@@ -1,1 +1,1 @@
-from models import Cart, CartProduct, Category, Product, User
+from models import Cart, Category, Product, User
