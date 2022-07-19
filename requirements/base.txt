@@ -1,2 +1,5 @@
 fastapi>=0.79,<0.80
 uvicorn[standard]>=0.18,<0.19
+sqlalchemy[asyncio]>=1.4,<1.5
+databases[asyncpg]>=0.6,<0.7
+psycopg2-binary>=2.9,<2.10
